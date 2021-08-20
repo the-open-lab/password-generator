@@ -32,6 +32,11 @@ java {
     targetCompatibility = JavaVersion.VERSION_11
 }
 
+javafx {
+    version = "11.0.2"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
 tasks {
     test {
         testLogging.showExceptions = true
