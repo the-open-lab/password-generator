@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>About Password Generator</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
@@ -63,14 +63,14 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_3">
+      <widget class="QLabel" name="dateLabel">
        <property name="text">
         <string>Built on 23 August 2021 16:29:15</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="copyrightLabel">
        <property name="text">
         <string>Copyright &amp;copy; 2021 Jonathan E. Landrum. All rights reserved.</string>
        </property>
@@ -80,7 +80,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="gplParagraph1Label">
        <property name="text">
         <string>This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License (GPL) as published by the Free Software Foundation (FSF), either version 3 of the License, or  (at your option) any later version.</string>
        </property>
@@ -93,7 +93,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_4">
+      <widget class="QLabel" name="gplParagraph2Label">
        <property name="text">
         <string>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</string>
        </property>
@@ -103,7 +103,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_5">
+      <widget class="QLabel" name="gplParagraph3Label">
        <property name="text">
         <string>You should have received a copy of the GNU General Public License along with this program. If not, see &lt;https://www.gnu.org/licenses/&gt;.</string>
        </property>

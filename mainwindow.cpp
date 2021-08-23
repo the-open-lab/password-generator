@@ -18,12 +18,6 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow() { delete ui; }
 
-void MainWindow::toggleMaximumRepeats() {
-  ui->maximumRepeatsSpinBox->setEnabled(
-      ui->allowRepeatsCheckBox->isChecked() &&
-      ui->maximumRepeatsCheckBox->isChecked());
-}
-
 void MainWindow::on_allowRepeatsCheckBox_stateChanged() {
   toggleMaximumRepeats();
 }
