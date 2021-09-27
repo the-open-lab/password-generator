@@ -29,7 +29,7 @@ qrc_*.cpp
 Thumbs.db
 *.res
 *.rc
-/build*
+/**/build*
 /.qmake.cache
 /.qmake.stash
 *.pro.user*
