@@ -1,0 +1,9 @@
+[submodule "password-generator/lib/qt5"]
+	path = password-generator/lib/qt5
+	url = https://github.com/qt/qt5.git
+[submodule "password-generator/lib/fluentui-system-icons"]
+	path = password-generator/lib/fluentui-system-icons
+	url = https://github.com/microsoft/fluentui-system-icons.git
+[submodule "password-generator/lib/libertine"]
+	path = password-generator/lib/libertine
+	url = https://github.com/libertine-fonts/libertine.git

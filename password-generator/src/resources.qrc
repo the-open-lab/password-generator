@@ -2,9 +2,9 @@
     <qresource prefix="/assets">
         <file>about.svg</file>
         <file>exit.svg</file>
-        <file>gpl-v3-logo.svg</file>
         <file>icon.ico</file>
         <file>license.svg</file>
         <file>logo.svg</file>
+        <file>free-art-license-logo.svg</file>
     </qresource>
 </RCC>
