@@ -1,5 +1,7 @@
 #include "focusablelineedit.h"
 
+#include <QApplication>
+#include <QClipboard>
 #include <QTimer>
 
 FocusableLineEdit::FocusableLineEdit(QWidget* parent) : QLineEdit(parent) {}
@@ -12,7 +14,6 @@ void FocusableLineEdit::focusInEvent(QFocusEvent* event) {
     QTimer::singleShot(0, this, [this]() {
         selectAll();
     });
-    this->copy();
 }
 
 void FocusableLineEdit::focusOutEvent(QFocusEvent* event) {

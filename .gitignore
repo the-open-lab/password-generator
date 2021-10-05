@@ -40,3 +40,4 @@ Thumbs.db
 *.dll
 *.exe
 *.log
+/**/cmake-build*
