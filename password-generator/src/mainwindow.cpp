@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QClipboard>
+#include <QCloseEvent>
+#include <QSettings>
 #include <QTimer>
 
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
@@ -9,6 +11,11 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 MainWindow::~MainWindow() {
     delete ui;
+}
+
+void MainWindow::closeEvent(QCloseEvent* event) {
+    saveSettings();
+    event->accept();
 }
 
 void MainWindow::on_upperCheckBox_toggled(bool checked) {
@@ -27,8 +34,8 @@ void MainWindow::on_specialCheckBox_toggled(bool checked) {
     ui->specialSpinBox->setEnabled(checked);
 }
 
-void MainWindow::on_minLengthCheckBox_toggled(bool checked) {
-    ui->minLengthSpinBox->setEnabled(checked);
+void MainWindow::on_lengthCheckBox_toggled(bool checked) {
+    ui->lengthSpinBox->setEnabled(checked);
 }
 
 void MainWindow::on_passwordLineEdit_focused(bool hasFocus) {
@@ -55,10 +62,17 @@ void MainWindow::on_generatePasswordButton_clicked() {
     ui->passwordLineEdit->setText("Success");
 }
 
-void MainWindow::getSettings() {
+void MainWindow::loadSettings() {}
 
-}
-
-void MainWindow::setSetting(const QString& key, const QVariant& value) {
-
+void MainWindow::saveSettings() {
+    settings.setValue(UPPER_CHK, ui->upperCheckBox->isChecked());
+    settings.setValue(UPPER_VAL, ui->upperSpinBox->value());
+    settings.setValue(LOWER_CHK, ui->lowerCheckBox->isChecked());
+    settings.setValue(LOWER_VAL, ui->lowerSpinBox->value());
+    settings.setValue(NUMBER_CHK, ui->numberCheckBox->isChecked());
+    settings.setValue(NUMBER_VAL, ui->numberSpinBox->value());
+    settings.setValue(SPECIAL_CHK, ui->specialCheckBox->isChecked());
+    settings.setValue(SPECIAL_VAL, ui->specialSpinBox->value());
+    settings.setValue(LENGTH_CHK, ui->lengthCheckBox->isChecked());
+    settings.setValue(LENGTH_VAL, ui->lengthSpinBox->value());
 }

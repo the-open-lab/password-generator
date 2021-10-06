@@ -257,7 +257,7 @@
         </layout>
        </item>
        <item>
-        <widget class="QCheckBox" name="minLengthCheckBox">
+        <widget class="QCheckBox" name="lengthCheckBox">
          <property name="font">
           <font>
            <weight>75</weight>
@@ -273,12 +273,12 @@
         </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="minLengthHBox">
+        <layout class="QHBoxLayout" name="lengthHBox">
          <property name="topMargin">
           <number>0</number>
          </property>
          <item>
-          <spacer name="minLengthSpacer">
+          <spacer name="lengthSpacer">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -294,7 +294,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QSpinBox" name="minLengthSpinBox">
+          <widget class="QSpinBox" name="lengthSpinBox">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -441,5 +441,22 @@
  <resources>
   <include location="resources.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>actionExit</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>149</x>
+     <y>235</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

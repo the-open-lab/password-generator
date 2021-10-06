@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QSettings>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -15,28 +16,38 @@ class MainWindow : public QMainWindow {
 public:
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
+    void closeEvent(QCloseEvent* event);
 
 private slots:
+    void showAbout();
+    void showLicense();
     void on_upperCheckBox_toggled(bool checked);
     void on_lowerCheckBox_toggled(bool checked);
     void on_numberCheckBox_toggled(bool checked);
     void on_specialCheckBox_toggled(bool checked);
-    void on_minLengthCheckBox_toggled(bool checked);
+    void on_lengthCheckBox_toggled(bool checked);
     void on_passwordLineEdit_focused(bool hasFocus);
     void on_generatePasswordButton_clicked();
 
 private:
     // -- Private Methods -----------------------------------------------------
-    void getSettings();
-    void setSetting(const QString& key, const QVariant& value);
+    void loadSettings();
+    void saveSettings();
 
     // -- Private Fields ------------------------------------------------------
     Ui::MainWindow* ui;
 
-    const QString UPPER_KEY = "upper";
-    const QString LOWER_KEY = "lower";
-    const QString NUMBER_KEY = "number";
-    const QString SPECIAL_KEY = "special";
-    const QString LENGTH_KEY = "length";
+    QSettings settings;
+
+    const QString UPPER_CHK = "upperChecked";
+    const QString UPPER_VAL = "upperValue";
+    const QString LOWER_CHK = "lowerChecked";
+    const QString LOWER_VAL = "lowerValue";
+    const QString NUMBER_CHK = "numberChecked";
+    const QString NUMBER_VAL = "numberValue";
+    const QString SPECIAL_CHK = "specialChecked";
+    const QString SPECIAL_VAL = "specialValue";
+    const QString LENGTH_CHK = "lengthChecked";
+    const QString LENGTH_VAL = "lengthValue";
 };
 #endif // MAINWINDOW_H

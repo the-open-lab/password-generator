@@ -6,6 +6,9 @@
 
 int main(int argc, char* argv[]) {
     QApplication application(argc, argv);
+    application.setOrganizationName("The Open Lab");
+    application.setOrganizationDomain("ch.open-lab");
+    application.setApplicationName("Password Generator");
 
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();
