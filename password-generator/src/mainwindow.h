@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QSettings>
+#include <QStandardPaths>
+#include <string>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -14,13 +16,18 @@ class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
+    // -- Public Methods ------------------------------------------------------
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
     void closeEvent(QCloseEvent* event);
 
+    // -- Public Fields -------------------------------------------------------
+    static QString ORG_NAME;
+    static QString ORG_DOMAIN;
+    static QString APP_NAME;
+
 private slots:
-    void showAbout();
-    void showLicense();
+    void on_actionExit_triggered(bool triggered);
     void on_upperCheckBox_toggled(bool checked);
     void on_lowerCheckBox_toggled(bool checked);
     void on_numberCheckBox_toggled(bool checked);
@@ -33,12 +40,12 @@ private:
     // -- Private Methods -----------------------------------------------------
     void loadSettings();
     void saveSettings();
+//    void showAbout();
+//    void showLicense();
 
     // -- Private Fields ------------------------------------------------------
     Ui::MainWindow* ui;
-
-    QSettings settings;
-
+    QSettings* settings;
     const QString UPPER_CHK = "upperChecked";
     const QString UPPER_VAL = "upperValue";
     const QString LOWER_CHK = "lowerChecked";
