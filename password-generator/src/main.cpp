@@ -9,6 +9,7 @@ int main(int argc, char* argv[]) {
     application.setOrganizationName(MainWindow::ORG_NAME);
     application.setOrganizationDomain(MainWindow::ORG_DOMAIN);
     application.setApplicationName(MainWindow::APP_NAME);
+    application.setWindowIcon(QIcon(":/assets/icon.ico"));
 
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();

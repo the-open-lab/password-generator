@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QSettings>
 #include <QStandardPaths>
-#include <string>
+#include <vector>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -27,25 +27,28 @@ public:
     static QString APP_NAME;
 
 private slots:
-    void on_actionExit_triggered(bool triggered);
-    void on_upperCheckBox_toggled(bool checked);
-    void on_lowerCheckBox_toggled(bool checked);
-    void on_numberCheckBox_toggled(bool checked);
-    void on_specialCheckBox_toggled(bool checked);
-    void on_lengthCheckBox_toggled(bool checked);
-    void on_passwordLineEdit_focused(bool hasFocus);
+    void on_actionExit_triggered(bool);
+    void on_actionAbout_triggered(bool);
+    void on_actionLicense_triggered(bool);
+    void on_upperCheckBox_toggled(bool);
+    void on_lowerCheckBox_toggled(bool);
+    void on_numberCheckBox_toggled(bool);
+    void on_specialCheckBox_toggled(bool);
+    void on_lengthCheckBox_toggled(bool);
+    void on_passwordLineEdit_focused(bool);
     void on_generatePasswordButton_clicked();
 
 private:
     // -- Private Methods -----------------------------------------------------
     void loadSettings();
     void saveSettings();
-//    void showAbout();
-//    void showLicense();
+//    std::vector<char> populateBytes();
+//    std::vector<char> getNextCandidate();
 
     // -- Private Fields ------------------------------------------------------
     Ui::MainWindow* ui;
     QSettings* settings;
+//    std::vector<char> bytes;
     const QString UPPER_CHK = "upperChecked";
     const QString UPPER_VAL = "upperValue";
     const QString LOWER_CHK = "lowerChecked";

@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QClipboard>
 #include <QCloseEvent>
+#include <QMessageBox>
 #include <QSettings>
 #include <QSysInfo>
 #include <QTimer>
@@ -60,6 +61,19 @@ void MainWindow::saveSettings() {
 
 void MainWindow::on_actionExit_triggered(bool) {
     this->close();
+}
+
+void MainWindow::on_actionAbout_triggered(bool) {
+    QMessageBox::about(this, "About " + MainWindow::APP_NAME,
+                       "<h3>" + MainWindow::APP_NAME + " 1.0.0</h3>"
+                       "<hr>"
+                       "<p>Built on " + __TIMESTAMP__ + ".</p>"
+                       "<p>Copyright &copy; 2021 " + MainWindow::ORG_NAME + ".</p>"
+                      );
+}
+
+void MainWindow::on_actionLicense_triggered(bool) {
+
 }
 
 void MainWindow::on_upperCheckBox_toggled(bool checked) {
