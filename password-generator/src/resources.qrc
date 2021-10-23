@@ -5,5 +5,6 @@
         <file>icon.ico</file>
         <file>license.svg</file>
         <file>logo.svg</file>
+        <file>fal.svg</file>
     </qresource>
 </RCC>

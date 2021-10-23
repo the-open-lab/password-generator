@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>LicenseDialog</class>
+ <widget class="QDialog" name="LicenseDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>354</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>250</width>
+       <height>382</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>250</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>230</width>
+        <height>4502</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>230</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>230</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="imageLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="resources.qrc">:/assets/fal.svg</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>false</bool>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignHCenter|Qt::AlignTop</set>
+         </property>
+         <property name="indent">
+          <number>0</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="textLabel">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;h2 style=&quot; margin-top:16px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Free Art License 1.3&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;[ Copyleft Attitude ]&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Free Art License 1.3 (FAL 1.3)&lt;/span&gt;&lt;/p&gt;&lt;h3 style=&quot; margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:large; font-weight:600;&quot;&gt;Preamble&lt;/span&gt;&lt;/h3&gt;&lt;p&gt;The Free Art License grants the right to freely copy, distribute, and transform creative Works without infringing the author's rights.&lt;/p&gt;&lt;p&gt;The Free Art License recognizes and protects these rights. Their implementation has been reformulated in order to allow everyone to use creations of the human mind in a creative manner, regardless of their types and ways of expression.&lt;/p&gt;&lt;p&gt;While the public's access to creations of the human mind usually is restricted by the implementation of copyright law, it is favored by the Free Art License. This license intends to allow the use of a Work's resources; to establish new conditions for creating in order to increase creation opportunities. The Free Art License grants the right to use a Work, and acknowledges the right holder's and the user's rights and responsibility.&lt;/p&gt;&lt;p&gt;The invention and development of digital technologies, Internet and Free Software have changed creation methods: creations of the human mind can obviously be distributed, exchanged, and transformed. They allow to produce Common Works to which everyone can contribute to the benefit of all.&lt;/p&gt;&lt;p&gt;The main rationale for this Free Art License is to promote and protect these creations of the human mind according to the principles of copyleft: freedom to use, copy, distribute, transform, and prohibition of exclusive appropriation.&lt;/p&gt;&lt;h3 style=&quot; margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:large; font-weight:600;&quot;&gt;Definitions&lt;/span&gt;&lt;/h3&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;&amp;quot;Work&amp;quot;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;The Initial Work, the Subsequent Works, or the Common Work, as defined hereafter. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;&amp;quot;Common Work&amp;quot;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;A Work composed of the Initial Work and all subsequent contributions to it (Originals and Copies). The initial author is the one who, by choosing this license, defines the conditions under which contributions are made. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;&amp;quot;Initial Work&amp;quot;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;The Work created by the initiator of the Common Work (as defined above), the Copies of which can be modified by anyone. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;&amp;quot;Subsequent Works&amp;quot;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;The contributions made by authors who participate in the evolution of the Common Work by exercising the rights to reproduce, distribute, and modify that are granted by the license. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;&amp;quot;Original&amp;quot;&lt;/span&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;(sources or resources of the Work)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;All Copies of either the Initial Work or any Subsequent Work mentioning a date and used by their author(s) as references for any subsequent updates, interpretations, Copies, or reproductions. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;&amp;quot;Copy&amp;quot;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Any reproduction of an Original as defined by this license.&lt;/p&gt;&lt;h3 style=&quot; margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:large; font-weight:600;&quot;&gt;Terms&lt;/span&gt;&lt;/h3&gt;&lt;h4 style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:medium; font-weight:600;&quot;&gt;1. OBJECT&lt;/span&gt;&lt;/h4&gt;&lt;p&gt;The aim of this license is to define the conditions under which one can use this Work freely.&lt;/p&gt;&lt;h4 style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:medium; font-weight:600;&quot;&gt;2. SCOPE&lt;/span&gt;&lt;/h4&gt;&lt;p&gt;This Work is subject to copyright law. Through this license its author specifies the extent to which you can copy, distribute, and modify it.&lt;/p&gt;&lt;h5 style=&quot; margin-top:12px; margin-bottom:4px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:small; font-weight:600;&quot;&gt;2.1 FREEDOM TO COPY (OR TO MAKE REPRODUCTIONS)&lt;/span&gt;&lt;/h5&gt;&lt;p&gt;You have the right to copy this Work for yourself, your friends, or any other person, whatever the technique used. &lt;/p&gt;&lt;h5 style=&quot; margin-top:12px; margin-bottom:4px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:small; font-weight:600;&quot;&gt;2.2 FREEDOM TO DISTRIBUTE, TO PERFORM IN PUBLIC&lt;/span&gt;&lt;/h5&gt;&lt;p&gt;You have the right to distribute copies of this Work; whether modified or not, whatever the medium and the place, with or without any charge, provided that you: attach this license without any modification to the copies of this Work or indicate precisely where the license can be found, specify to the recipient the names of the author(s) of the Originals, including yours if you have modified the Work, specify to the recipient where to access the Originals (either Initial or Subsequent). The authors of the Originals may, if they wish to, give you the right to distribute the Originals under the same conditions as the copies.&lt;/p&gt;&lt;h5 style=&quot; margin-top:12px; margin-bottom:4px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:small; font-weight:600;&quot;&gt;2.3 FREEDOM TO MODIFY&lt;/span&gt;&lt;/h5&gt;&lt;p&gt;You have the right to modify copies of the Originals (whether Initial or Subsequent) provided you comply with the following conditions: all conditions in Article 2.2 above, if you distribute modified copies; indicate that the Work has been modified and, if it is possible, what kind of modifications have been made; distribute the Subsequent Work under the same license or any compatible license. The author(s) of the original Work may give you the right to modify it under the same conditions as the copies.&lt;/p&gt;&lt;h4 style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:medium; font-weight:600;&quot;&gt;3. RELATED RIGHTS&lt;/span&gt;&lt;/h4&gt;&lt;p&gt;Activities giving rise to author's rights and related rights shall not challenge the rights granted by this license. For example, this is the reason why performances must be subject to the same license or a compatible license. Similarly, integrating the Work in a database, a compilation or an anthology shall not prevent anyone from using the Work under the same conditions as those defined in this license.&lt;/p&gt;&lt;h4 style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:medium; font-weight:600;&quot;&gt;4. INCORPORATION OF THE WORK&lt;/span&gt;&lt;/h4&gt;&lt;p&gt;Incorporating this Work into a larger Work that is not subject to the Free Art License shall not challenge the rights granted by this license. If the Work can no longer be accessed apart from the larger Work in which it is incorporated, then incorporation shall only be allowed under the condition that the larger Work is subject either to the Free Art License or a compatible license.&lt;/p&gt;&lt;h4 style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:medium; font-weight:600;&quot;&gt;5. COMPATIBILITY&lt;/span&gt;&lt;/h4&gt;&lt;p&gt;A license is compatible with the Free Art License provided: it gives the right to copy, distribute, and modify copies of the Work including for commercial purposes and without any other restrictions than those required by the respect of the other compatibility criteria; it ensures proper attribution of the Work to its authors and access to previous versions of the Work when possible; it recognizes the Free Art License as compatible (reciprocity); it requires that changes made to the Work be subject to the same license or to a license which also meets these compatibility criteria.&lt;/p&gt;&lt;h4 style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:medium; font-weight:600;&quot;&gt;6. YOUR INTELLECTUAL RIGHTS&lt;/span&gt;&lt;/h4&gt;&lt;p&gt;This license does not aim at denying your author's rights in your contribution or any related right. By choosing to contribute to the development of this Common Work, you only agree to grant others the same rights with regard to your contribution as those you were granted by this license. Conferring these rights does not mean you have to give up your intellectual rights.&lt;/p&gt;&lt;h4 style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:medium; font-weight:600;&quot;&gt;7. YOUR RESPONSIBILITIES&lt;/span&gt;&lt;/h4&gt;&lt;p&gt;The freedom to use the Work as defined by the Free Art License (right to copy, distribute, modify) implies that everyone is responsible for their own actions.&lt;/p&gt;&lt;h4 style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:medium; font-weight:600;&quot;&gt;8. DURATION OF THE LICENSE&lt;/span&gt;&lt;/h4&gt;&lt;p&gt;This license takes effect as of your acceptance of its terms. The act of copying, distributing, or modifying the Work constitutes a tacit agreement. This license will remain in effect for as long as the copyright which is attached to the Work. If you do not respect the terms of this license, you automatically lose the rights that it confers. If the legal status or legislation to which you are subject makes it impossible for you to respect the terms of this license, you may not make use of the rights which it confers.&lt;/p&gt;&lt;h4 style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:medium; font-weight:600;&quot;&gt;9. VARIOUS VERSIONS OF THE LICENSE&lt;/span&gt;&lt;/h4&gt;&lt;p&gt;This license may undergo periodic modifications to incorporate improvements by its authors (instigators of the &amp;quot;Copyleft Attitude&amp;quot; movement) by way of new, numbered versions. You will always have the choice of accepting the terms contained in the version under which the copy of the Work was distributed to you, or alternatively, to use the provisions of one of the subsequent versions.&lt;/p&gt;&lt;h4 style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:medium; font-weight:600;&quot;&gt;10. SUB-LICENSING&lt;/span&gt;&lt;/h4&gt;&lt;p&gt;Sub-licenses are not authorized by this license. Any person wishing to make use of the rights that it confers will be directly bound to the authors of the Common Work.&lt;/p&gt;&lt;h4 style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:medium; font-weight:600;&quot;&gt;11. LEGAL FRAMEWORK&lt;/span&gt;&lt;/h4&gt;&lt;p&gt;This license is written with respect to both French law and the Berne Convention for the Protection of Literary and Artistic Works.&lt;/p&gt;&lt;h3 style=&quot; margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:large; font-weight:600;&quot;&gt;USER GUIDE&lt;/span&gt;&lt;/h3&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;How to use the Free Art License?&lt;/span&gt;&lt;br/&gt;To benefit from the Free Art License, you only need to mention the following elements on your Work:&lt;br/&gt;&lt;/li&gt;&lt;p&gt;[Name of the author, title, date of the Work. When applicable, names of authors of the Common Work and, if possible, where to find the Originals].&lt;br/&gt;Copyleft: This is a free Work, you can copy, distribute, and modify it under the terms of the Free Art License https://artlibre.org/licence/lal/en/. &lt;/p&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Why to use the Free Art License?&lt;/span&gt;&lt;br/&gt;&lt;/li&gt;&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 2;&quot;&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;To give the greatest number of people access to your Work. &lt;/li&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;To allow it to be distributed freely. &lt;/li&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;To allow it to evolve by allowing its copy, distribution, and transformation by others. &lt;/li&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;So that you benefit from the resources of a Work when it is under the Free Art License: to be able to copy, distribute, or transform it freely. &lt;/li&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;But also, because the Free Art License offers a legal frameWork to disallow any misappropriation. It is forbidden to take hold of your Work and bypass the creative process for one's exclusive possession. &lt;/li&gt;&lt;/ol&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;When to use the Free Art License?&lt;/span&gt;&lt;br/&gt;Any time you want to benefit and make others benefit from the right to copy, distribute and transform creative Works without any exclusive appropriation, you should use the Free Art License. You can for example use it for scientific, artistic or educational projects. &lt;/li&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;What kinds of Works can be subject to the Free Art License?&lt;/span&gt;&lt;br/&gt;The Free Art License can be applied to digital as well as physical Works. You can choose to apply the Free Art License on any text, picture, sound, gesture, or whatever sort of stuff on which you have sufficient author's rights. &lt;/li&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Historical background of this license:&lt;/span&gt;&lt;br/&gt;It is the result of observing, using, and creating digital technologies, free software, the Internet, and art. It arose from the &amp;quot;Copyleft Attitude&amp;quot; meetings which took place in Paris in 2000. For the first time, these meetings brought together members of the Free Software community, artists, and members of the art world. The goal was to adapt the principles of Copyleft and free software to all sorts of creations. https://artlibre.org.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Copyleft Attitude, 2007.&lt;br/&gt;You can make reproductions and distribute this license verbatim (without any changes). &lt;/p&gt;&lt;p&gt;Translation : Jonathan Clarke, Benjamin Jean, Griselda Jung, Fanny Mourguet, Antoine Pitrou.&lt;/p&gt;&lt;p&gt;Thanks to framalang.org.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="textFormat">
+          <enum>Qt::RichText</enum>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>LicenseDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>LicenseDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

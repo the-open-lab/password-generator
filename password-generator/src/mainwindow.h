@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QSettings>
 #include <QStandardPaths>
+#include <QScrollArea>
 #include <vector>
 
 QT_BEGIN_NAMESPACE
@@ -48,6 +49,7 @@ private:
     // -- Private Fields ------------------------------------------------------
     Ui::MainWindow* ui;
     QSettings* settings;
+    QScrollArea* scrollArea;
 //    std::vector<char> bytes;
     const QString UPPER_CHK = "upperChecked";
     const QString UPPER_VAL = "upperValue";

@@ -12,14 +12,17 @@ CONFIG += c++11
 
 SOURCES += \
     focusablelineedit.cpp \
+    licensedialog.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     focusablelineedit.h \
+    licensedialog.h \
     mainwindow.h
 
 FORMS += \
+    licensedialog.ui \
     mainwindow.ui
 
 TRANSLATIONS += \

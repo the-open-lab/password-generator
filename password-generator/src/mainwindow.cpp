@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "licensedialog.h"
 #include <QClipboard>
 #include <QCloseEvent>
 #include <QMessageBox>
@@ -7,6 +8,7 @@
 #include <QSysInfo>
 #include <QTimer>
 #include <QtDebug>
+#include <QScrollArea>
 
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
@@ -73,7 +75,8 @@ void MainWindow::on_actionAbout_triggered(bool) {
 }
 
 void MainWindow::on_actionLicense_triggered(bool) {
-
+    auto dialog = new LicenseDialog();
+    dialog->show();
 }
 
 void MainWindow::on_upperCheckBox_toggled(bool checked) {
