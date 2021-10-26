@@ -6,6 +6,15 @@ Most, if not all, password generators are built on their core language's [random
 
 This project makes use of the RANDOM.org API in order to obtain truly random bytes from which to create the resulting password, and then filters this result in a "sieve" to produce an output of only those characters in the alphanumeric and special characters sets &ndash; collectively referred to here as "password characters". These characters are those which are able to be typed from an English-language keyboard. From this set of candidate characters, the resulting password is created from the substring beginning with the first character until the _n_<small><sup>th</sup></small> character, where _n_ is the required password length.
 
+## Building
+
+This project was created using [Qt Creator](https://github.com/qt-creator/qt-creator). It _should_ compile without any issues on any platform that has a build of Qt available for it. If you run into issues and find a workaround, fork the project and then [open a pull request](https://github.com/the-open-lab/password-generator/compare) to add it to the code base.
+
+### Dependencies:
+
+* [Qt 6](https://github.com/qt/qt5)
+* [Qt Creator](https://github.com/qt-creator/qt-creator) (or your favorite C++ IDE)
+
 ## Licenses
 
 This is free software, built on the shoulders of previous free software. The libraries required to build this project are linked as Git submodules in the [lib](password-generator/lib) directory:
