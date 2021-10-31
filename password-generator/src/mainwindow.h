@@ -30,7 +30,6 @@ public:
 private slots:
     void on_actionExit_triggered(bool);
     void on_actionAbout_triggered(bool);
-    void on_actionLicense_triggered(bool);
     void on_upperCheckBox_toggled(bool);
     void on_lowerCheckBox_toggled(bool);
     void on_numberCheckBox_toggled(bool);
@@ -40,17 +39,19 @@ private slots:
     void on_generatePasswordButton_clicked();
 
 private:
+    // --- Private Types ------------------------------------------------------
+    using QSettingsPtr = std::unique_ptr<QSettings>;
+    using QStringPtr = std::unique_ptr<QString>;
+
     // -- Private Methods -----------------------------------------------------
     void loadSettings();
     void saveSettings();
-//    std::vector<char> populateBytes();
-//    std::vector<char> getNextCandidate();
+    QStringPtr getCandidate();
 
     // -- Private Fields ------------------------------------------------------
     Ui::MainWindow* ui;
-    QSettings* settings;
-    QScrollArea* scrollArea;
-//    std::vector<char> bytes;
+    QSettingsPtr settings;
+    QStringPtr candidate;
     const QString UPPER_CHK = "upperChecked";
     const QString UPPER_VAL = "upperValue";
     const QString LOWER_CHK = "lowerChecked";

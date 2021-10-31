@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "licensedialog.h"
 #include <QClipboard>
 #include <QCloseEvent>
 #include <QMessageBox>
@@ -8,16 +7,15 @@
 #include <QSysInfo>
 #include <QTimer>
 #include <QtDebug>
-#include <QScrollArea>
 
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
 
+    QSettings::Format format = QSettings::NativeFormat;
 #ifdef Q_OS_WIN
-    settings = new QSettings(QSettings::IniFormat, QSettings::UserScope, ORG_NAME, APP_NAME);
-#else
-    settings = new QSettings(QSettings: NativeFormat, QSettings::UserScope, ORG_NAME, APP_NAME);
+    format = QSettings::IniFormat;
 #endif
+    settings = std::make_unique<QSettings>(format, QSettings::UserScope, ORG_NAME, APP_NAME);
 
     loadSettings();
 }
@@ -61,6 +59,11 @@ void MainWindow::saveSettings() {
     settings->endGroup();
 }
 
+MainWindow::QStringPtr MainWindow::getCandidate() {
+    QStringPtr result = std::make_unique<QString>("Success");
+    return result;
+}
+
 void MainWindow::on_actionExit_triggered(bool) {
     this->close();
 }
@@ -72,11 +75,6 @@ void MainWindow::on_actionAbout_triggered(bool) {
                        "<p>Built on " + __TIMESTAMP__ + ".</p>"
                        "<p>Copyright &copy; 2021 " + MainWindow::ORG_NAME + ".</p>"
                       );
-}
-
-void MainWindow::on_actionLicense_triggered(bool) {
-    auto dialog = new LicenseDialog();
-    dialog->show();
 }
 
 void MainWindow::on_upperCheckBox_toggled(bool checked) {
@@ -120,7 +118,7 @@ void MainWindow::on_passwordLineEdit_focused(bool hasFocus) {
 }
 
 void MainWindow::on_generatePasswordButton_clicked() {
-    ui->passwordLineEdit->setText("Success");
+    ui->passwordLineEdit->setText(*MainWindow::getCandidate());
 }
 
 QString MainWindow::ORG_NAME = "The Open Lab";
