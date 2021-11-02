@@ -5,6 +5,7 @@
 #include <QSettings>
 #include <QStandardPaths>
 #include <QScrollArea>
+#include <QNetworkReply>
 #include <vector>
 
 QT_BEGIN_NAMESPACE
@@ -26,15 +27,16 @@ public:
     static QString ORG_NAME;
     static QString ORG_DOMAIN;
     static QString APP_NAME;
+    static QString API_KEY;
 
 private slots:
+    void onPostReply(QNetworkReply*);
     void on_actionExit_triggered(bool);
     void on_actionAbout_triggered(bool);
     void on_upperCheckBox_toggled(bool);
     void on_lowerCheckBox_toggled(bool);
     void on_numberCheckBox_toggled(bool);
     void on_specialCheckBox_toggled(bool);
-    void on_lengthCheckBox_toggled(bool);
     void on_passwordLineEdit_focused(bool);
     void on_generatePasswordButton_clicked();
 
@@ -46,12 +48,13 @@ private:
     // -- Private Methods -----------------------------------------------------
     void loadSettings();
     void saveSettings();
-    QStringPtr getCandidate();
+    void setCandidate();
+    QJsonValue getPasswordCharacters();
 
     // -- Private Fields ------------------------------------------------------
     Ui::MainWindow* ui;
     QSettingsPtr settings;
-    QStringPtr candidate;
+    QString candidate;
     const QString UPPER_CHK = "upperChecked";
     const QString UPPER_VAL = "upperValue";
     const QString LOWER_CHK = "lowerChecked";
@@ -60,7 +63,6 @@ private:
     const QString NUMBER_VAL = "numberValue";
     const QString SPECIAL_CHK = "specialChecked";
     const QString SPECIAL_VAL = "specialValue";
-    const QString LENGTH_CHK = "lengthChecked";
     const QString LENGTH_VAL = "lengthValue";
 };
 #endif // MAINWINDOW_H

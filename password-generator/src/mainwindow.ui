@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>300</width>
-    <height>471</height>
+    <height>472</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+   <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -22,10 +22,21 @@
     <height>0</height>
    </size>
   </property>
+  <property name="font">
+   <font>
+    <pointsize>8</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Password Generator</string>
   </property>
   <widget class="QWidget" name="components">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
    <layout class="QVBoxLayout" name="mainWindowVLayout">
     <property name="sizeConstraint">
      <enum>QLayout::SetMinAndMaxSize</enum>
@@ -40,7 +51,7 @@
       </property>
       <property name="minimumSize">
        <size>
-        <width>282</width>
+        <width>0</width>
         <height>0</height>
        </size>
       </property>
@@ -52,6 +63,7 @@
         <widget class="QCheckBox" name="upperCheckBox">
          <property name="font">
           <font>
+           <pointsize>8</pointsize>
            <weight>75</weight>
            <bold>true</bold>
           </font>
@@ -66,6 +78,9 @@
        </item>
        <item>
         <layout class="QHBoxLayout" name="upperHBox">
+         <property name="spacing">
+          <number>0</number>
+         </property>
          <item>
           <spacer name="upperSpacer">
            <property name="orientation">
@@ -93,6 +108,9 @@
            <property name="minimum">
             <number>1</number>
            </property>
+           <property name="maximum">
+            <number>999999999</number>
+           </property>
           </widget>
          </item>
         </layout>
@@ -101,6 +119,7 @@
         <widget class="QCheckBox" name="lowerCheckBox">
          <property name="font">
           <font>
+           <pointsize>8</pointsize>
            <weight>75</weight>
            <bold>true</bold>
           </font>
@@ -115,6 +134,9 @@
        </item>
        <item>
         <layout class="QHBoxLayout" name="lowerHBox">
+         <property name="spacing">
+          <number>0</number>
+         </property>
          <property name="topMargin">
           <number>0</number>
          </property>
@@ -145,6 +167,9 @@
            <property name="minimum">
             <number>1</number>
            </property>
+           <property name="maximum">
+            <number>999999999</number>
+           </property>
           </widget>
          </item>
         </layout>
@@ -153,6 +178,7 @@
         <widget class="QCheckBox" name="numberCheckBox">
          <property name="font">
           <font>
+           <pointsize>8</pointsize>
            <weight>75</weight>
            <bold>true</bold>
           </font>
@@ -167,6 +193,9 @@
        </item>
        <item>
         <layout class="QHBoxLayout" name="numberHBox">
+         <property name="spacing">
+          <number>0</number>
+         </property>
          <property name="topMargin">
           <number>0</number>
          </property>
@@ -197,6 +226,9 @@
            <property name="minimum">
             <number>1</number>
            </property>
+           <property name="maximum">
+            <number>999999999</number>
+           </property>
           </widget>
          </item>
         </layout>
@@ -205,6 +237,7 @@
         <widget class="QCheckBox" name="specialCheckBox">
          <property name="font">
           <font>
+           <pointsize>8</pointsize>
            <weight>75</weight>
            <bold>true</bold>
           </font>
@@ -219,6 +252,9 @@
        </item>
        <item>
         <layout class="QHBoxLayout" name="specialHBox">
+         <property name="spacing">
+          <number>0</number>
+         </property>
          <property name="leftMargin">
           <number>0</number>
          </property>
@@ -252,28 +288,18 @@
            <property name="minimum">
             <number>1</number>
            </property>
+           <property name="maximum">
+            <number>999999999</number>
+           </property>
           </widget>
          </item>
         </layout>
        </item>
        <item>
-        <widget class="QCheckBox" name="lengthCheckBox">
-         <property name="font">
-          <font>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Enforce Minimum Password Length</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
         <layout class="QHBoxLayout" name="lengthHBox">
+         <property name="spacing">
+          <number>0</number>
+         </property>
          <property name="topMargin">
           <number>0</number>
          </property>
@@ -294,17 +320,62 @@
           </spacer>
          </item>
          <item>
-          <widget class="QSpinBox" name="lengthSpinBox">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
+          <layout class="QVBoxLayout" name="lengthVBox">
+           <property name="spacing">
+            <number>6</number>
            </property>
-           <property name="value">
-            <number>15</number>
+           <property name="topMargin">
+            <number>6</number>
            </property>
-          </widget>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="lengthLabel">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>8</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Minimum Password Length</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="lengthSpinBox">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimum">
+              <number>8</number>
+             </property>
+             <property name="maximum">
+              <number>999999999</number>
+             </property>
+             <property name="value">
+              <number>16</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
         </layout>
        </item>
@@ -323,6 +394,9 @@
        <string>Generate Password</string>
       </property>
       <layout class="QVBoxLayout" name="passwordVLayout">
+       <property name="bottomMargin">
+        <number>9</number>
+       </property>
        <item>
         <widget class="FocusableLineEdit" name="passwordLineEdit">
          <property name="sizePolicy">
@@ -371,7 +445,7 @@
      <x>0</x>
      <y>0</y>
      <width>300</width>
-     <height>20</height>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

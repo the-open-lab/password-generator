@@ -7,9 +7,19 @@
 #include <QSysInfo>
 #include <QTimer>
 #include <QtDebug>
+#include <QJsonObject>
+#include <QJsonDocument>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QJsonArray>
+#include <QFontDatabase>
 
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
+    this->adjustSize();
+    QFont monospace = QFontDatabase::systemFont(QFontDatabase::FixedFont);
+    monospace.setStyleHint(QFont::TypeWriter);
+    ui->passwordLineEdit->setFont(monospace);
 
     QSettings::Format format = QSettings::NativeFormat;
 #ifdef Q_OS_WIN
@@ -39,7 +49,6 @@ void MainWindow::loadSettings() {
     ui->numberSpinBox->setValue(settings->value(NUMBER_VAL).toInt());
     ui->specialCheckBox->setChecked(settings->value(SPECIAL_CHK).toBool());
     ui->specialSpinBox->setValue(settings->value(SPECIAL_VAL).toInt());
-    ui->lengthCheckBox->setChecked(settings->value(LENGTH_CHK).toBool());
     ui->lengthSpinBox->setValue(settings->value(LENGTH_VAL).toInt());
     settings->endGroup();
 }
@@ -54,14 +63,82 @@ void MainWindow::saveSettings() {
     settings->setValue(NUMBER_VAL, ui->numberSpinBox->value());
     settings->setValue(SPECIAL_CHK, ui->specialCheckBox->isChecked());
     settings->setValue(SPECIAL_VAL, ui->specialSpinBox->value());
-    settings->setValue(LENGTH_CHK, ui->lengthCheckBox->isChecked());
     settings->setValue(LENGTH_VAL, ui->lengthSpinBox->value());
     settings->endGroup();
 }
 
-MainWindow::QStringPtr MainWindow::getCandidate() {
-    QStringPtr result = std::make_unique<QString>("Success");
-    return result;
+void MainWindow::setCandidate() {
+    QNetworkAccessManager* manager = new QNetworkAccessManager(this);
+    connect(manager, SIGNAL(finished(QNetworkReply*)), SLOT(onPostReply(QNetworkReply*)));
+    const QUrl url(QStringLiteral("https://api.random.org/json-rpc/2/invoke"));
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+    QJsonObject object;
+    object.insert("jsonrpc", "2.0");
+    object.insert("method", "generateStrings");
+    object.insert("id", 42);
+
+    QJsonObject params;
+    params.insert("apiKey", API_KEY.isEmpty() ? "" : API_KEY);
+    params.insert("n", 1);
+    params.insert("length", ui->lengthSpinBox->value());
+    params.insert("characters", getPasswordCharacters());
+    params.insert("replacement", false);
+    object.insert("params", params);
+
+    QJsonDocument document(object);
+    QByteArray body = document.toJson();
+    QNetworkReply* reply = manager->post(request, body);
+
+    while(!reply->isFinished()) {
+        qApp->processEvents();
+    }
+}
+
+QJsonValue MainWindow::getPasswordCharacters() {
+    QString passwordCharacters = QString();
+
+    if(
+        !ui->upperCheckBox->isChecked() &&
+        !ui->lowerCheckBox->isChecked() &&
+        !ui->numberCheckBox->isChecked() &&
+        !ui->specialCheckBox->isChecked()
+    ) {
+        passwordCharacters.append("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789");
+    } else {
+        if(ui->upperCheckBox->isChecked()) {
+            passwordCharacters.append("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+        }
+
+        if(ui->lowerCheckBox->isChecked()) {
+            passwordCharacters.append("abcdefghijklmnopqrstuvwxyz");
+        }
+
+        if(ui->numberCheckBox->isChecked()) {
+            passwordCharacters.append("0123456789");
+        }
+
+        if(ui->specialCheckBox->isChecked()) {
+            passwordCharacters.append("~`!@#$%^&*()-_=+[]{}\\|;:'\",<.>/? ");
+        }
+    }
+
+    return QJsonValue(passwordCharacters);
+}
+
+void MainWindow::onPostReply(QNetworkReply* reply) {
+    if(reply->error() == QNetworkReply::NoError) {
+        QJsonDocument response = QJsonDocument::fromJson(reply->readAll());
+        candidate = QString(
+                        response.object()
+                        .find("result")->toObject()
+                        .find("random")->toObject()
+                        .find("data")->toArray().at(0).toString()
+                    );
+    } else {
+        QMessageBox::critical(this, "Error", "Error while accessing the RANDOM.org API: " + reply->errorString());
+    }
 }
 
 void MainWindow::on_actionExit_triggered(bool) {
@@ -69,11 +146,11 @@ void MainWindow::on_actionExit_triggered(bool) {
 }
 
 void MainWindow::on_actionAbout_triggered(bool) {
-    QMessageBox::about(this, "About " + MainWindow::APP_NAME,
-                       "<h3>" + MainWindow::APP_NAME + " 1.0.0</h3>"
+    QMessageBox::about(this, "About " + APP_NAME,
+                       "<h3>" + APP_NAME + " 1.0.0</h3>"
                        "<hr>"
                        "<p>Built on " + __TIMESTAMP__ + ".</p>"
-                       "<p>Copyright &copy; 2021 " + MainWindow::ORG_NAME + ".</p>"
+                       "<p>Copyright &copy; 2021 " + ORG_NAME + " and the contributors.</p>"
                       );
 }
 
@@ -93,10 +170,6 @@ void MainWindow::on_specialCheckBox_toggled(bool checked) {
     ui->specialSpinBox->setEnabled(checked);
 }
 
-void MainWindow::on_lengthCheckBox_toggled(bool checked) {
-    ui->lengthSpinBox->setEnabled(checked);
-}
-
 void MainWindow::on_passwordLineEdit_focused(bool hasFocus) {
     if(!ui->passwordLineEdit->text().isEmpty() && hasFocus) {
         QClipboard* clipboard = QApplication::clipboard();
@@ -108,7 +181,7 @@ void MainWindow::on_passwordLineEdit_focused(bool hasFocus) {
 
         ui->statusBar->showMessage("Password Copied");
         QTimer::singleShot(3000, this, [ = ]() {
-            ui->statusBar->showMessage ("");
+            ui->statusBar->showMessage("");
         });
 
 #if defined(Q_OS_LINUX)
@@ -118,9 +191,11 @@ void MainWindow::on_passwordLineEdit_focused(bool hasFocus) {
 }
 
 void MainWindow::on_generatePasswordButton_clicked() {
-    ui->passwordLineEdit->setText(*MainWindow::getCandidate());
+    setCandidate();
+    ui->passwordLineEdit->setText(candidate);
 }
 
 QString MainWindow::ORG_NAME = "The Open Lab";
 QString MainWindow::ORG_DOMAIN = "ch.open-lab";
 QString MainWindow::APP_NAME = "Password Generator";
+QString MainWindow::API_KEY = getenv("RANDOM_ORG_API_KEY");
