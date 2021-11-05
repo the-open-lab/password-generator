@@ -33,10 +33,14 @@ private slots:
     void onPostReply(QNetworkReply*);
     void on_actionExit_triggered(bool);
     void on_actionAbout_triggered(bool);
-    void on_upperCheckBox_toggled(bool);
-    void on_lowerCheckBox_toggled(bool);
-    void on_numberCheckBox_toggled(bool);
-    void on_specialCheckBox_toggled(bool);
+    void on_enforceUpperCheckBox_toggled(bool);
+    void on_enforceLowerCheckBox_toggled(bool);
+    void on_enforceNumberCheckBox_toggled(bool);
+    void on_enforceSpecialCheckBox_toggled(bool);
+    void on_includeUpperCheckBox_toggled(bool);
+    void on_includeLowerCheckBox_toggled(bool);
+    void on_includeNumberCheckBox_toggled(bool);
+    void on_includeSpecialCheckBox_toggled(bool);
     void on_passwordLineEdit_focused(bool);
     void on_generatePasswordButton_clicked();
 
@@ -55,6 +59,10 @@ private:
     Ui::MainWindow* ui;
     QSettingsPtr settings;
     QString candidate;
+    const QString NUMBERS = "0123456789";
+    const QString UPPERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const QString LOWERS = "abcdefghijklmnopqrstuvwxyz";
+    const QString SPECIALS = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
     const QString UPPER_CHK = "upperChecked";
     const QString UPPER_VAL = "upperValue";
     const QString LOWER_CHK = "lowerChecked";

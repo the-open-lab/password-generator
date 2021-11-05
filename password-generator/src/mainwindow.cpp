@@ -41,13 +41,13 @@ void MainWindow::closeEvent(QCloseEvent* event) {
 
 void MainWindow::loadSettings() {
     settings->beginGroup(ORG_DOMAIN);
-    ui->upperCheckBox->setChecked(settings->value(UPPER_CHK).toBool());
+    ui->includeUpperCheckBox->setChecked(settings->value(UPPER_CHK).toBool());
     ui->upperSpinBox->setValue(settings->value(UPPER_VAL).toInt());
-    ui->lowerCheckBox->setChecked(settings->value(LOWER_CHK).toBool());
+    ui->includeLowerCheckBox->setChecked(settings->value(LOWER_CHK).toBool());
     ui->lowerSpinBox->setValue(settings->value(LOWER_VAL).toInt());
-    ui->numberCheckBox->setChecked(settings->value(NUMBER_CHK).toBool());
+    ui->includeNumberCheckBox->setChecked(settings->value(NUMBER_CHK).toBool());
     ui->numberSpinBox->setValue(settings->value(NUMBER_VAL).toInt());
-    ui->specialCheckBox->setChecked(settings->value(SPECIAL_CHK).toBool());
+    ui->includeSpecialCheckBox->setChecked(settings->value(SPECIAL_CHK).toBool());
     ui->specialSpinBox->setValue(settings->value(SPECIAL_VAL).toInt());
     ui->lengthSpinBox->setValue(settings->value(LENGTH_VAL).toInt());
     settings->endGroup();
@@ -55,13 +55,13 @@ void MainWindow::loadSettings() {
 
 void MainWindow::saveSettings() {
     settings->beginGroup(ORG_DOMAIN);
-    settings->setValue(UPPER_CHK, ui->upperCheckBox->isChecked());
+    settings->setValue(UPPER_CHK, ui->includeUpperCheckBox->isChecked());
     settings->setValue(UPPER_VAL, ui->upperSpinBox->value());
-    settings->setValue(LOWER_CHK, ui->lowerCheckBox->isChecked());
+    settings->setValue(LOWER_CHK, ui->includeLowerCheckBox->isChecked());
     settings->setValue(LOWER_VAL, ui->lowerSpinBox->value());
-    settings->setValue(NUMBER_CHK, ui->numberCheckBox->isChecked());
+    settings->setValue(NUMBER_CHK, ui->includeNumberCheckBox->isChecked());
     settings->setValue(NUMBER_VAL, ui->numberSpinBox->value());
-    settings->setValue(SPECIAL_CHK, ui->specialCheckBox->isChecked());
+    settings->setValue(SPECIAL_CHK, ui->includeSpecialCheckBox->isChecked());
     settings->setValue(SPECIAL_VAL, ui->specialSpinBox->value());
     settings->setValue(LENGTH_VAL, ui->lengthSpinBox->value());
     settings->endGroup();
@@ -100,27 +100,27 @@ QJsonValue MainWindow::getPasswordCharacters() {
     QString passwordCharacters = QString();
 
     if(
-        !ui->upperCheckBox->isChecked() &&
-        !ui->lowerCheckBox->isChecked() &&
-        !ui->numberCheckBox->isChecked() &&
-        !ui->specialCheckBox->isChecked()
+        !ui->includeUpperCheckBox->isChecked() &&
+        !ui->includeLowerCheckBox->isChecked() &&
+        !ui->includeNumberCheckBox->isChecked() &&
+        !ui->includeSpecialCheckBox->isChecked()
     ) {
-        passwordCharacters.append("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789");
+        passwordCharacters.append(UPPERS).append(LOWERS).append(NUMBERS).append(SPECIALS);
     } else {
-        if(ui->upperCheckBox->isChecked()) {
-            passwordCharacters.append("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+        if(ui->includeUpperCheckBox->isChecked()) {
+            passwordCharacters.append(UPPERS);
         }
 
-        if(ui->lowerCheckBox->isChecked()) {
-            passwordCharacters.append("abcdefghijklmnopqrstuvwxyz");
+        if(ui->includeLowerCheckBox->isChecked()) {
+            passwordCharacters.append(LOWERS);
         }
 
-        if(ui->numberCheckBox->isChecked()) {
-            passwordCharacters.append("0123456789");
+        if(ui->includeNumberCheckBox->isChecked()) {
+            passwordCharacters.append(NUMBERS);
         }
 
-        if(ui->specialCheckBox->isChecked()) {
-            passwordCharacters.append("~`!@#$%^&*()-_=+[]{}\\|;:'\",<.>/? ");
+        if(ui->includeSpecialCheckBox->isChecked()) {
+            passwordCharacters.append(SPECIALS);
         }
     }
 
@@ -154,20 +154,36 @@ void MainWindow::on_actionAbout_triggered(bool) {
                       );
 }
 
-void MainWindow::on_upperCheckBox_toggled(bool checked) {
+void MainWindow::on_enforceUpperCheckBox_toggled(bool checked) {
     ui->upperSpinBox->setEnabled(checked);
 }
 
-void MainWindow::on_lowerCheckBox_toggled(bool checked) {
+void MainWindow::on_enforceLowerCheckBox_toggled(bool checked) {
     ui->lowerSpinBox->setEnabled(checked);
 }
 
-void MainWindow::on_numberCheckBox_toggled(bool checked) {
+void MainWindow::on_enforceNumberCheckBox_toggled(bool checked) {
     ui->numberSpinBox->setEnabled(checked);
 }
 
-void MainWindow::on_specialCheckBox_toggled(bool checked) {
+void MainWindow::on_enforceSpecialCheckBox_toggled(bool checked) {
     ui->specialSpinBox->setEnabled(checked);
+}
+
+void MainWindow::on_includeUpperCheckBox_toggled(bool checked) {
+    ui->enforceUpperCheckBox->setEnabled(checked);
+}
+
+void MainWindow::on_includeLowerCheckBox_toggled(bool checked) {
+    ui->enforceLowerCheckBox->setEnabled(checked);
+}
+
+void MainWindow::on_includeNumberCheckBox_toggled(bool checked) {
+    ui->enforceNumberCheckBox->setEnabled(checked);
+}
+
+void MainWindow::on_includeSpecialCheckBox_toggled(bool checked) {
+    ui->enforceSpecialCheckBox->setEnabled(checked);
 }
 
 void MainWindow::on_passwordLineEdit_focused(bool hasFocus) {
@@ -191,8 +207,10 @@ void MainWindow::on_passwordLineEdit_focused(bool hasFocus) {
 }
 
 void MainWindow::on_generatePasswordButton_clicked() {
+    ui->statusBar->showMessage("Calculating");
     setCandidate();
     ui->passwordLineEdit->setText(candidate);
+    ui->statusBar->showMessage("");
 }
 
 QString MainWindow::ORG_NAME = "The Open Lab";
