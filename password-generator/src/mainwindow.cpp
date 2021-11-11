@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QClipboard>
 #include <QCloseEvent>
@@ -17,6 +17,7 @@
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
     this->adjustSize();
+    configurePasswordCharacters();
     QFont monospace = QFontDatabase::systemFont(QFontDatabase::FixedFont);
     monospace.setStyleHint(QFont::TypeWriter);
     ui->passwordLineEdit->setFont(monospace);
@@ -67,6 +68,50 @@ void MainWindow::saveSettings() {
     settings->endGroup();
 }
 
+void MainWindow::configurePasswordCharacters() {
+    int c = 32;
+
+    while(c < 48) {
+        if(c == 34 || c == 39) {
+            specials += "\\";
+        }
+
+        specials += static_cast<char>(c++);
+    }
+
+    while(c < 58) {
+        numbers += static_cast<char>(c++);
+    }
+
+    while(c < 65) {
+        if(c == 63) {
+            specials += "\\";
+        }
+
+        specials += static_cast<char>(c++);
+    }
+
+    while(c < 91) {
+        uppers += static_cast<char>(c++);
+    }
+
+    while(c < 97) {
+        if(c == 92) {
+            specials += "\\";
+        }
+
+        specials += static_cast<char>(c++);
+    }
+
+    while(c < 123) {
+        lowers += static_cast<char>(c++);
+    }
+
+    while(c < 127) {
+        specials += static_cast<char>(c++);
+    }
+}
+
 void MainWindow::setCandidate() {
     QNetworkAccessManager* manager = new QNetworkAccessManager(this);
     connect(manager, SIGNAL(finished(QNetworkReply*)), SLOT(onPostReply(QNetworkReply*)));
@@ -96,31 +141,44 @@ void MainWindow::setCandidate() {
     }
 }
 
+QString MainWindow::shuffleCandidate(QString candidate) {
+// -- To shuffle an array a of n elements (indices 0..n-1):
+//    for i from n−1 downto 1 do
+//         j ← random integer such that 0 ≤ j ≤ i
+//         exchange a[j] and a[i]
+    int len = candidate.length();
+
+    for(int i = len; i >= 1; --i) {
+
+    }
+}
+
 QJsonValue MainWindow::getPasswordCharacters() {
     QString passwordCharacters = QString();
 
     if(
+        // Provide password characters even if the UI has no selection checked
         !ui->includeUpperCheckBox->isChecked() &&
         !ui->includeLowerCheckBox->isChecked() &&
         !ui->includeNumberCheckBox->isChecked() &&
         !ui->includeSpecialCheckBox->isChecked()
     ) {
-        passwordCharacters.append(UPPERS).append(LOWERS).append(NUMBERS).append(SPECIALS);
+        passwordCharacters.append(uppers).append(lowers).append(numbers).append(specials);
     } else {
         if(ui->includeUpperCheckBox->isChecked()) {
-            passwordCharacters.append(UPPERS);
+            passwordCharacters.append(uppers);
         }
 
         if(ui->includeLowerCheckBox->isChecked()) {
-            passwordCharacters.append(LOWERS);
+            passwordCharacters.append(lowers);
         }
 
         if(ui->includeNumberCheckBox->isChecked()) {
-            passwordCharacters.append(NUMBERS);
+            passwordCharacters.append(numbers);
         }
 
         if(ui->includeSpecialCheckBox->isChecked()) {
-            passwordCharacters.append(SPECIALS);
+            passwordCharacters.append(specials);
         }
     }
 

@@ -52,17 +52,12 @@ private:
     // -- Private Methods -----------------------------------------------------
     void loadSettings();
     void saveSettings();
+    void configurePasswordCharacters();
     void setCandidate();
+    QString shuffleCandidate(QString);
     QJsonValue getPasswordCharacters();
 
     // -- Private Fields ------------------------------------------------------
-    Ui::MainWindow* ui;
-    QSettingsPtr settings;
-    QString candidate;
-    const QString NUMBERS = "0123456789";
-    const QString UPPERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const QString LOWERS = "abcdefghijklmnopqrstuvwxyz";
-    const QString SPECIALS = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
     const QString UPPER_CHK = "upperChecked";
     const QString UPPER_VAL = "upperValue";
     const QString LOWER_CHK = "lowerChecked";
@@ -72,5 +67,12 @@ private:
     const QString SPECIAL_CHK = "specialChecked";
     const QString SPECIAL_VAL = "specialValue";
     const QString LENGTH_VAL = "lengthValue";
+    QString numbers = "";
+    QString uppers = "";
+    QString lowers = "";
+    QString specials = "";
+    Ui::MainWindow* ui;
+    QSettingsPtr settings;
+    QString candidate;
 };
 #endif // MAINWINDOW_H
